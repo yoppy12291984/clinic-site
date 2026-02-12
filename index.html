@@ -3,97 +3,292 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>よしおかこどもクリニック</title>
+  <title>よしおかこどもクリニック | 京都市西京区の小児科</title>
+  <meta name="description" content="京都市西京区の小児科、よしおかこどもクリニック。一般小児科・乳幼児健診・予防接種・アレルギー外来。" />
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f8ff;
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      line-height: 1.7;
     }
 
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      background-color: #f7faf8;
+      color: #333;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== Header ===== */
     header {
-      background-color: #4CAF50;
+      background: linear-gradient(135deg, #43a047, #66bb6a);
       color: white;
-      padding: 22px 16px;
+      padding: 28px 20px;
       text-align: center;
     }
 
     header h1 {
-      margin: 0;
-      font-size: 28px;
+      font-size: 26px;
+      letter-spacing: 0.08em;
     }
 
-    header p {
-      margin: 6px 0 0;
-      opacity: 0.95;
+    header .subtitle {
+      margin-top: 6px;
+      font-size: 14px;
+      opacity: 0.92;
+      letter-spacing: 0.04em;
     }
 
+    /* ===== Nav ===== */
     nav {
-      background-color: #e8f5e9;
-      padding: 10px;
+      background-color: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 0;
       text-align: center;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     }
 
     nav a {
+      display: inline-block;
       text-decoration: none;
       color: #2e7d32;
-      margin: 0 14px;
-      font-weight: bold;
-      display: inline-block;
-      padding: 6px 8px;
-      border-radius: 6px;
+      padding: 14px 20px;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: background-color 0.2s, color 0.2s;
     }
 
-    nav a:hover {
-      background-color: rgba(76, 175, 80, 0.12);
+    nav a:hover,
+    nav a.active {
+      background-color: #e8f5e9;
+      color: #1b5e20;
     }
 
+    /* ===== Main ===== */
     main {
-      max-width: 900px;
+      max-width: 860px;
       margin: 0 auto;
-      padding: 18px 14px;
+      padding: 24px 16px 40px;
     }
 
+    /* ===== Section ===== */
     section {
-      background: white;
-      border-radius: 10px;
-      padding: 16px 16px;
-      margin: 14px 0;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
 
-    h2 {
-      margin: 0 0 10px;
-      border-bottom: 2px solid #4CAF50;
-      padding-bottom: 6px;
-      font-size: 20px;
+    section h2 {
+      font-size: 19px;
+      color: #2e7d32;
+      border-left: 4px solid #43a047;
+      padding-left: 12px;
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
     }
 
-    .note {
-      font-size: 14px;
-      opacity: 0.85;
-    }
-
-    footer {
-      background-color: #eee;
+    /* ===== Hours Table ===== */
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
       text-align: center;
-      padding: 12px;
-      margin-top: 20px;
-      font-size: 13px;
-      opacity: 0.9;
+      font-size: 14px;
     }
 
-    /* スマホでメニューが詰まるのを防ぐ */
-    @media (max-width: 520px) {
-      nav a {
-        margin: 6px 8px;
-      }
+    .hours-table th,
+    .hours-table td {
+      padding: 10px 6px;
+      border: 1px solid #e0e0e0;
+    }
+
+    .hours-table thead th {
+      background-color: #43a047;
+      color: white;
+      font-weight: 600;
+    }
+
+    .hours-table thead th.day-sun {
+      background-color: #c62828;
+    }
+
+    .hours-table thead th.day-sat {
+      background-color: #1565c0;
+    }
+
+    .hours-table tbody th {
+      background-color: #f1f8e9;
+      font-weight: 600;
+      white-space: nowrap;
+      text-align: left;
+      padding-left: 12px;
+    }
+
+    .hours-table .open {
+      color: #2e7d32;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .hours-table .closed {
+      color: #bbb;
+      font-size: 15px;
+    }
+
+    .hours-note {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #777;
+      line-height: 1.7;
+    }
+
+    /* ===== Info List ===== */
+    .info-item {
+      display: flex;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+    .info-label {
+      flex-shrink: 0;
+      width: 80px;
+      font-weight: 600;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .info-value {
+      font-size: 15px;
+    }
+
+    .info-value a {
+      color: #2e7d32;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .info-value a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Map ===== */
+    .map-container {
+      margin-top: 16px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e0e0e0;
+    }
+
+    .map-container iframe {
+      display: block;
+      width: 100%;
+      height: 280px;
+      border: none;
+    }
+
+    /* ===== Feature Cards ===== */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+
+    .feature-card {
+      background: #f1f8e9;
+      border-radius: 10px;
+      padding: 18px 16px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .feature-icon {
+      font-size: 30px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .feature-card h3 {
+      font-size: 15px;
+      color: #2e7d32;
+      margin-bottom: 4px;
+    }
+
+    .feature-card p {
+      font-size: 13px;
+      color: #666;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background-color: #2e7d32;
+      color: rgba(255,255,255,0.88);
+      text-align: center;
+      padding: 20px 16px;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+    }
+
+    footer .footer-name {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 4px;
+      color: #fff;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
       header h1 {
-        font-size: 22px;
+        font-size: 21px;
+      }
+
+      nav a {
+        padding: 12px 14px;
+        font-size: 14px;
+      }
+
+      section {
+        padding: 18px 14px;
+      }
+
+      .hours-table {
+        font-size: 12px;
+      }
+
+      .hours-table th,
+      .hours-table td {
+        padding: 8px 3px;
+      }
+
+      .info-item {
+        flex-direction: column;
+      }
+
+      .info-label {
+        width: auto;
+        margin-bottom: 2px;
+      }
+
+      .features {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
@@ -102,38 +297,113 @@
 <body>
   <header>
     <h1>よしおかこどもクリニック</h1>
-    <p>地域に寄り添う小児科クリニック</p>
+    <p class="subtitle">京都市西京区の小児科クリニック</p>
   </header>
 
   <nav>
-    <a href="index.html">ホーム</a>
+    <a href="index.html" class="active">ホーム</a>
     <a href="medical.html">診療案内</a>
   </nav>
 
   <main>
+    <!-- 診療科目 -->
+    <section>
+      <h2>診療科目</h2>
+      <div class="features">
+        <div class="feature-card">
+          <span class="feature-icon" role="img" aria-label="聴診器">&#x1FA7A;</span>
+          <h3>一般小児科</h3>
+          <p>発熱・咳・鼻水など<br>お子さまの体調不良に対応</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon" role="img" aria-label="赤ちゃん">&#x1F476;</span>
+          <h3>乳幼児健診</h3>
+          <p>お子さまの成長・発達を<br>丁寧にチェック</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon" role="img" aria-label="注射">&#x1F489;</span>
+          <h3>予防接種</h3>
+          <p>各種ワクチンの<br>接種に対応</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon" role="img" aria-label="花">&#x1F33C;</span>
+          <h3>アレルギー外来</h3>
+          <p>食物アレルギー・花粉症<br>などのご相談</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 診療時間 -->
     <section>
       <h2>診療時間</h2>
-      <p>月〜金：9:00〜12:00 / 16:00〜18:00</p>
-      <p>土曜日：9:00〜12:00</p>
-      <p>日曜・祝日：休診</p>
-      <p class="note">※実際の診療時間に合わせて修正してください。</p>
+      <table class="hours-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>月</th>
+            <th>火</th>
+            <th>水</th>
+            <th>木</th>
+            <th>金</th>
+            <th class="day-sat">土</th>
+            <th class="day-sun">日</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>午前 9:00〜12:00</th>
+            <td><span class="open">&#9675;</span></td>
+            <td><span class="open">&#9675;</span></td>
+            <td><span class="closed">&times;</span></td>
+            <td><span class="open">&#9675;</span></td>
+            <td><span class="open">&#9675;</span></td>
+            <td><span class="open">&#9675;</span></td>
+            <td><span class="closed">&times;</span></td>
+          </tr>
+          <tr>
+            <th>午後 5:00〜8:00</th>
+            <td><span class="open">&#9675;</span></td>
+            <td><span class="open">&#9675;</span></td>
+            <td><span class="open">&#9675;</span></td>
+            <td><span class="closed">&times;</span></td>
+            <td><span class="open">&#9675;</span></td>
+            <td><span class="closed">&times;</span></td>
+            <td><span class="closed">&times;</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="hours-note">
+        ※ 休診日：水曜午前・木曜午後・土曜午後・日曜・祝日<br>
+        ※ 受付は診療終了の15分前までにお願いいたします。
+      </p>
     </section>
 
+    <!-- アクセス -->
     <section>
       <h2>アクセス</h2>
-      <p>京都市〇〇区〇〇町1-2-3</p>
-      <p class="note">※Googleマップ埋め込みも後で追加できます。</p>
-    </section>
-
-    <section>
-      <h2>お問い合わせ</h2>
-      <p>電話：075-xxxx-xxxx</p>
-      <p class="note">※診療内容に関するご相談はお電話でお問い合わせください。</p>
+      <div class="info-item">
+        <span class="info-label">住所</span>
+        <span class="info-value">〒615-8106 京都市西京区川島滑樋町46-3-B</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">電話</span>
+        <span class="info-value"><a href="tel:075-383-0070">075-383-0070</a></span>
+      </div>
+      <div class="map-container">
+        <iframe
+          src="https://maps.google.com/maps?q=%E4%BA%AC%E9%83%BD%E5%B8%82%E8%A5%BF%E4%BA%AC%E5%8C%BA%E5%B7%9D%E5%B3%B6%E6%BB%91%E6%A8%8B%E7%94%BA46-3&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+          title="よしおかこどもクリニックの地図"
+        ></iframe>
+      </div>
     </section>
   </main>
 
   <footer>
-    © 2026 よしおかこどもクリニック
+    <p class="footer-name">よしおかこどもクリニック</p>
+    <p>&copy; 2026 よしおかこどもクリニック All rights reserved.</p>
   </footer>
 </body>
 </html>
